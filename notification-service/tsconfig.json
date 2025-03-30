@@ -1,36 +1,35 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
-    "lib": ["dom", "esnext"],
+    "target": "ES2015",
+    "lib": ["dom", "ES2015"],
+   "module": "commonjs",
     "baseUrl": ".",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
     "outDir": "./build",
-    "noUnusedParameters": true,
+    "rootDir": ".",
+    "strict": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
-    "rootDir": ".",
-    "sourceMap": true,
-    "strict": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "target": "es2021",
+    "sourceMap": true,
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "pretty": true,
     "resolveJsonModule": true,
     "plugins": [
-      {"transform": "typescript-transform-paths"},
-         {"transform": "typescript-transform-paths", "afterDeclarations": true},
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true },
     ],
     "paths": {
-      "@notifications/*": ["src/*"]
+      "@notifications/*": ["src/*"],
+      "@sidharth-97/gigscout-helper": [
+        "node_modules/@sidharth-97/gigscout-helper/build/cjs",  // CJS build for Node.js
+        "node_modules/@sidharth-97/gigscout-helper/build/esm"   // ESM build for modern imports
+      ]
     }
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  }
 }

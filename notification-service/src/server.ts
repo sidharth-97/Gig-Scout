@@ -1,15 +1,16 @@
 import { winstonLogger } from '@sidharth-97/gigscout-helper';
-import express, { Application } from 'express';
+import  { Application } from 'express';
 import { Logger } from 'winston';
 import { config } from './config';
+import { healthRoutes } from './routes';
 
 const SERVER_PORT = 4001
 
 const log:Logger=winstonLogger(`${config.ELASTICSEARCH_URL}`,'notification-service','debug')
-const app:Application = express();
 
 export function start(app:Application):void {
    startServer(app)
+   app.use('',healthRoutes())
    startQueues()
    startElasticSearch()
 }
@@ -31,5 +32,3 @@ function startServer(app:Application):void {
         log.log('error', error);
     }
 }
-
-start(app);
